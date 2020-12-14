@@ -61,6 +61,10 @@ public class UsersResource {
     }
 
     public Response ziskejUzivatele() {
-        if();
+        if(loggedManager.prihlasenej == null){
+           return Response.status(Response.Status.UNAUTHORIZED).build();
+        } else {
+            return Response.ok(loggedManager.prihlasenej.dostanJmeno()).build();
+        }
     }
 }
