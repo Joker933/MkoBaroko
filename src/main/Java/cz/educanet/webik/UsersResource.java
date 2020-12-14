@@ -17,6 +17,7 @@ public class UsersResource {
     @Inject
     private LoggedManager loggedManager;
 
+    @Path("/register")
     @POST
     public Response register(
             @FormParam("prvniJmeno")
@@ -40,6 +41,7 @@ public class UsersResource {
         }
     }
 
+    @Path("Login")
     @POST
     public Response prihlaseni(
             @FormParam("Jmeno") String jmeno,
@@ -55,6 +57,9 @@ public class UsersResource {
                 return Response.ok().build();
             }
     }
+
+    @Path("loggout")
+    @POST
     public Response odhlaseni() {
         loggedManager.prihlasenej = null;
         return Response.ok("Byl jsi odhlasen").build();
